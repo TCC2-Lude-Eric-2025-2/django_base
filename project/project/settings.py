@@ -47,10 +47,18 @@ OAUTH2_CLIENT_ID = env("OAUTH2_CLIENT_ID")
 OAUTH2_SCOPES = env("OAUTH2_SCOPES")
 
 # Google Cloud OAuth2 Configuration
-GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID")
-GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET")
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.environ.get("GOOGLE_CLIENT_ID")
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET")
 GOOGLE_REDIRECT_URI = os.environ.get("GOOGLE_REDIRECT_URI")
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
+    "openid",
+    "email",
+    "profile",
+]
+
+LOGIN_REDIRECT_URL = "/"
+LOGIN_ERROR_URL = "/login-error/"
 
 # Application definition
 
