@@ -83,8 +83,11 @@ class CartViewSet(viewsets.GenericViewSet):
             )
         except ValueError as exc:
             logging.warning("Error adding item to cart: %s", exc)
+            # Propaga a mensagem da exceção original no detalhe para os testes
             return Response(
-                {"detail": "Não foi possível adicionar o item ao carrinho."},
+                {
+                    "detail": f"Não foi possível adicionar o item ao carrinho. {str(exc)}"
+                },
                 status=status.HTTP_400_BAD_REQUEST,
             )
         except Product.DoesNotExist:
@@ -110,8 +113,9 @@ class CartViewSet(viewsets.GenericViewSet):
             )
         except ValueError as exc:
             logging.warning("Error removing item from cart: %s", exc)
+            # Inclui a mensagem da exceção no detalhe para melhorar diagnóstico
             return Response(
-                {"detail": "Não foi possível remover o item do carrinho."},
+                {"detail": f"Não foi possível remover o item do carrinho. {str(exc)}"},
                 status=status.HTTP_400_BAD_REQUEST,
             )
 

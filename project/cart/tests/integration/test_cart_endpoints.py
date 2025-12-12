@@ -4,10 +4,9 @@ import pytest
 from cart.models.cart import Cart
 from cart.models.cart_item import CartItem
 from cart.models.product import Product
+from cart.services.cart_service import CartService
 from rest_framework import status
 from rest_framework.test import APIClient
-
-from project.cart.services.cart_service import CartService
 
 BASE_ADD_URL = "/cart/v1/add_item/"
 BASE_REMOVE_URL = "/cart/v1/remove_item/"
