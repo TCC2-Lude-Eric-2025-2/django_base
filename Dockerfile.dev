@@ -33,7 +33,7 @@ COPY scripts/ /app/scripts/
 RUN adduser --disabled-password --no-create-home --gecos "" devuser && \
     mkdir -p /app/project/logs /app/data && \
     chown -R devuser:devuser /app && \
-    chmod +x /app/scripts/run.sh
+    chmod 777 /app/scripts/run.sh
 
 EXPOSE 8000
 

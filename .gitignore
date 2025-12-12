@@ -177,3 +177,4 @@ project_report.md
 # Arquivos de configuração sensíveis
 docker-compose.override.yml
 local_settings.py
+*client_secret*.json
