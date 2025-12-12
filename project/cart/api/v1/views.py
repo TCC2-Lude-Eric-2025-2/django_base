@@ -103,6 +103,7 @@ class CartViewSet(viewsets.GenericViewSet):
                 cart=cart, product_id=product_id, quantity=quantity
             )
         except ValueError as exc:
-            return Response({"detail": str(exc)}, status=status.HTTP_400_BAD_REQUEST)
+            logging.warning("Error removing item from cart: %s", exc)
+            return Response({"detail": "Não foi possível remover o item do carrinho."}, status=status.HTTP_400_BAD_REQUEST)
 
         return Response(status=status.HTTP_204_NO_CONTENT)
