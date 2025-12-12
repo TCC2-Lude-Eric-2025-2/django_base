@@ -7,6 +7,8 @@ from cart.models.product import Product
 from rest_framework import status
 from rest_framework.test import APIClient
 
+from project.cart.services.cart_service import CartService
+
 BASE_ADD_URL = "/cart/v1/add_item/"
 BASE_REMOVE_URL = "/cart/v1/remove_item/"
 BASE_LIST_URL = "/cart/v1/"
@@ -98,6 +100,7 @@ def test_add_item_nonexistent_product_returns_404(monkeypatch):
 def test_remove_nonexistent_item_is_idempotent(monkeypatch):
     """
     Atualmente o serviço remove_item retorna silenciosamente se o item não existe.
+
     A view expõe remove_item em POST /cart/.../remove_item/ e devolve 204 no caso.
     """
     client = APIClient()

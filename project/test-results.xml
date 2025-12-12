@@ -1,1 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="0" time="6.110" timestamp="2025-12-12T14:26:56.911610-03:00" hostname="luderibeiro-win" /></testsuites>
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="1" time="5.300" timestamp="2025-12-12T15:37:21.776765-03:00" hostname="luderibeiro-win"><testcase classname="" name="project.cart.tests.integration.test_cart_endpoints" time="0.000"><error message="collection failure">ImportError while importing test module '/home/luderibeiro/Documentos/repos/FGA/TCC/django_base/project/cart/tests/integration/test_cart_endpoints.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.13/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+project/cart/tests/integration/test_cart_endpoints.py:10: in &lt;module&gt;
+    from project.cart.services.cart_service import CartService
+E   ModuleNotFoundError: No module named 'project.cart'</error></testcase></testsuite></testsuites>

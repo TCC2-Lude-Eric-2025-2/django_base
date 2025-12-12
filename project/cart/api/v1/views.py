@@ -1,3 +1,4 @@
+import logging
 from typing import Optional
 
 from cart.models.cart import Cart
@@ -10,7 +11,6 @@ from rest_framework.permissions import AllowAny
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-import logging
 from .serializers import (
     AddItemSerializer,
     CartItemSerializer,
@@ -21,7 +21,9 @@ from .serializers import (
 
 class CartViewSet(viewsets.GenericViewSet):
     """
-    API do Carrinho:
+    API do Carrinho.
+
+    Endpoints:
     - list: GET /cart/v1/
     - add_item: POST /cart/v1/add_item/
     - remove_item: POST /cart/v1/remove_item/
@@ -55,7 +57,8 @@ class CartViewSet(viewsets.GenericViewSet):
 
     def list(self, request: Request) -> Response:
         """
-         Retorna o carrinho atual (instância única) com itens e totais sem paginação.
+        Retorna o carrinho atual (instância única) com itens e totais sem paginação.
+
         GET /cart/v1/
         """
         cart = self._get_cart_from_request(request)
@@ -80,7 +83,10 @@ class CartViewSet(viewsets.GenericViewSet):
             )
         except ValueError as exc:
             logging.warning("Error adding item to cart: %s", exc)
-            return Response({"detail": "Não foi possível adicionar o item ao carrinho."}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                {"detail": "Não foi possível adicionar o item ao carrinho."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
         except Product.DoesNotExist:
             raise NotFound("Produto não encontrado.")
 
@@ -104,6 +110,9 @@ class CartViewSet(viewsets.GenericViewSet):
             )
         except ValueError as exc:
             logging.warning("Error removing item from cart: %s", exc)
-            return Response({"detail": "Não foi possível remover o item do carrinho."}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                {"detail": "Não foi possível remover o item do carrinho."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
 
         return Response(status=status.HTTP_204_NO_CONTENT)
