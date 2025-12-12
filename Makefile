@@ -48,7 +48,7 @@ install: ## Instala todas as dependências
 
 test: ## Executa todos os testes
 	@echo "$(BLUE)🧪 Executando testes...$(NC)"
-	@cd $(PROJECT_DIR) && . ../$(VENV)/bin/activate && export PYTHONPATH=$$PWD && $(PYTEST) -v core cart
+	@cd $(PROJECT_DIR) && . ../$(VENV)/bin/activate && export PYTHONPATH=$$PWD && $(PYTEST) -v cart core
 	@echo "$(GREEN)✅ Testes executados com sucesso!$(NC)"
 
 test-coverage: ## Executa testes com cobertura
