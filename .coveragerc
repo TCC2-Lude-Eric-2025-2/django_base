@@ -1,6 +1,6 @@
 [run]
 # Como o pytest roda dentro de 'project/', o source é o diretório atual (.)
-source = project/
+source = .
 omit =
     # Padrões genéricos para ignorar em QUALQUER app (core, cart, etc)
     */migrations/*
