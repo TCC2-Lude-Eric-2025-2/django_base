@@ -99,17 +99,10 @@ jobs:
                   REDIS_URL: redis://localhost:6379/0
                   SECRET_KEY: ${{ secrets.SECRET_KEY_FOR_CI }}
                   DEBUG: False
-                  # Adiciona o diretório project ao path para o Django encontrar os módulos
-                  PYTHONPATH: ${{ github.workspace }}/project
               run: |
-                  # NÃO FAZEMOS cd project AQUI. Rodamos da raiz.
-                  # Isso garante que o coverage.xml tenha caminhos como 'project/cart/...'
-                  
-                  pytest --cov=project/cart --cov=project/core \
-                         --cov-report=xml:project/coverage.xml \
-                         --cov-report=term \
-                         --junitxml=project/test-results.xml \
-                         -c project/pytest.ini
+                  cd project
+                  export PYTHONPATH=$PWD
+                  pytest --cov=cart --cov=core --cov-report=xml:coverage.xml --cov-report=html:htmlcov --cov-report=term --junitxml=test-results.xml
 
             - name: 📊 Upload coverage to Codecov
               uses: codecov/codecov-action@v5
