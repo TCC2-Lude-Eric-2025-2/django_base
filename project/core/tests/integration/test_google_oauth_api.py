@@ -1,11 +1,13 @@
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 
+
 class ProfilePageTest(TestCase):
     def test_profile_requires_auth(self):
         response = self.client.get("/profile/")
         self.assertEqual(response.status_code, 302)
         self.assertIn("/login/", response.url)
+
 
 class ProfilePageLoggedTest(TestCase):
     def test_profile_access_logged(self):
