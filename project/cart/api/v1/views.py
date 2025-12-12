@@ -10,6 +10,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.request import Request
 from rest_framework.response import Response
 
+import logging
 from .serializers import (
     AddItemSerializer,
     CartItemSerializer,
@@ -78,7 +79,8 @@ class CartViewSet(viewsets.GenericViewSet):
                 cart=cart, product_id=product_id, quantity=quantity
             )
         except ValueError as exc:
-            return Response({"detail": str(exc)}, status=status.HTTP_400_BAD_REQUEST)
+            logging.warning("Error adding item to cart: %s", exc)
+            return Response({"detail": "Não foi possível adicionar o item ao carrinho."}, status=status.HTTP_400_BAD_REQUEST)
         except Product.DoesNotExist:
             raise NotFound("Produto não encontrado.")
 
