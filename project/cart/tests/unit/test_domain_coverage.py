@@ -12,6 +12,7 @@ MODULES = [
 
 
 def _import_or_skip(mod_name: str):
+    mod = None
     try:
         mod = importlib.import_module(mod_name)
     except Exception:
