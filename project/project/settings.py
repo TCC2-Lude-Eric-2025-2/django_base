@@ -57,7 +57,7 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
     "profile",
 ]
 
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "/profile/"
 LOGIN_ERROR_URL = "/login-error/"
 
 # Application definition
