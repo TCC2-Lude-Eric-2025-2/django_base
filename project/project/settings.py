@@ -46,6 +46,11 @@ ALLOWED_HOSTS = env("ALLOWED_HOSTS")
 OAUTH2_CLIENT_ID = env("OAUTH2_CLIENT_ID")
 OAUTH2_SCOPES = env("OAUTH2_SCOPES")
 
+# Google Cloud OAuth2 Configuration 
+GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID")
+GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET")
+GOOGLE_REDIRECT_URI = os.environ.get("GOOGLE_REDIRECT_URI")
+
 
 # Application definition
 
@@ -61,7 +66,13 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.admin",
     "core",
+    "social_django",
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
