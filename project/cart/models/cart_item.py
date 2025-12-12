@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from decimal import Decimal
-from typing import TYPE_CHECKING
 
 from cart.models.product import Product
 from django.db import models
