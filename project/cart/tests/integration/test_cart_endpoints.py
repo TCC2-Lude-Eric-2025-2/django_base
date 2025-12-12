@@ -112,9 +112,9 @@ def test_remove_nonexistent_item_is_idempotent(monkeypatch):
     session.save()
     session_key = session.session_key
 
-    import cart.services.cart_service as _svc_mod
+    # Use already-imported Product directly for monkeypatching
 
-    monkeypatch.setattr(_svc_mod.Product.objects, "get", lambda pk: product)
+    monkeypatch.setattr(Product.objects, "get", lambda pk: product)
 
     # garantir que não exista item no carrinho atual
     cart = Cart.objects.create(session_key=session_key)
