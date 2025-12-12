@@ -102,7 +102,7 @@ jobs:
               run: |
                   cd project
                   export PYTHONPATH=$PWD
-                  pytest --cov=core --cov-report=xml:coverage.xml --cov-report=html:htmlcov --cov-report=term --junitxml=test-results.xml
+                  pytest --cov=cart --cov=core --cov-report=xml:coverage.xml --cov-report=html:htmlcov --cov-report=term --junitxml=test-results.xml
 
             - name: 📊 Upload coverage to Codecov
               uses: codecov/codecov-action@v5

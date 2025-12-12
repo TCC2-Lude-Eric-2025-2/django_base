@@ -4,10 +4,9 @@ Django settings reforçadas para segurança e configuração por ambiente.
 
 import os
 from pathlib import Path
-import structlog
-from django.core.exceptions import ImproperlyConfigured
 
 import environ
+import structlog
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -35,7 +34,7 @@ environ.Env.read_env(BASE_DIR.parent / ".env")
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY", default="django-insecure-change-me-in-production")
+SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
@@ -61,6 +60,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.admin",
     "core",
+    "cart.apps.CartConfig",
 ]
 
 MIDDLEWARE = [
