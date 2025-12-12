@@ -9,7 +9,6 @@ from cart.models.product import Product
 from django.db import transaction
 
 if TYPE_CHECKING:
-    from django.contrib.auth.models import AbstractUser as User  # type: ignore
 else:
     from django.contrib.auth import get_user_model
 
