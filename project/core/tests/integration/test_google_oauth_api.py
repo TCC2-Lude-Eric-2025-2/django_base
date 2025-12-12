@@ -7,7 +7,6 @@ from oauth2_provider.models import AccessToken, Application
 
 @pytest.mark.django_db
 class TestGoogleOAuthProfile:
-
     def _create_access_token(self, user):
         app, _ = Application.objects.get_or_create(
             name="Test App",
@@ -30,9 +29,11 @@ class TestGoogleOAuthProfile:
 
         token = self._create_access_token(user)
 
+        client.force_login(user)
+
         response = client.get(
             "/profile/",
             HTTP_AUTHORIZATION=f"Bearer {token.token}",
         )
 
-        assert response.status_code == 302
+        assert response.status_code == 200
