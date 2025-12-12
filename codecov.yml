@@ -1,0 +1,21 @@
+codecov:
+    require_ci_to_pass: yes
+
+coverage:
+    precision: 2 # Casas decimais (ex: 92.45%)
+    round: down # Arredondar para baixo
+    range: "70...100" # Faixa visual de cores (vermelho...verde)
+
+    status:
+        # Configuração para o Projeto Inteiro (Total)
+        project:
+            default:
+                target: 90% # A meta é manter acima de 90%
+                threshold: 1% # PERMITE cair até 1% sem falhar o CI (Ex: de 93.0% para 92.1% passa)
+
+        # Configuração apenas para o Código Novo (Patch)
+        # Isso garante que o código que você está enviando no PR seja bem testado
+        patch:
+            default:
+                target: 90% # O código novo (do PR) deve ter 90% de cobertura
+                threshold: 5% # Tolerância maior para arquivos específicos
