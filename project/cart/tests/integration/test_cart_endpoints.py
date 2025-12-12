@@ -4,7 +4,6 @@ import pytest
 from cart.models.cart import Cart
 from cart.models.cart_item import CartItem
 from cart.models.product import Product
-import cart.services.cart_service as _svc_mod
 from rest_framework import status
 from rest_framework.test import APIClient
 
